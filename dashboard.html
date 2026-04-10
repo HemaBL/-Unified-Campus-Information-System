@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>UCIS Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  
+  <header class="navbar">
+    <div class="logo">UCIS</div>
+ 
+
+     
+      <div class="profile-dropdown" id="profileDropdown">
+        <p><strong id="profileUsername"></strong></p>
+        <p id="profileRole"></p>
+        
+        <a href="profile.html"><img id="userIcon" class="user-icon" src="https://i.pinimg.com/736x/f9/f7/b4/f9f7b48c9ba210a41fe50c837e079537.jpg" alt="User Account" onclick="toggleAccountPopup()" style="cursor:pointer; border-radius:50%; width:50px; height:50px;"></a><br>
+        
+      </div>
+    </div>
+</header>
+<section class="dashboard">
+
+    <title>Search Faculty</title>
+
+<h2>Search Faculty</h2>
+
+<input type="text" id="searchBar" placeholder="Search faculty by name..." onkeyup="searchFaculty()">
+
+<div id="facultyList" class="faculty-container">
+
+
+    <!-- Faculty 1 -->
+<div class="faculty-card" data-faculty-id="f1">
+
+        <div class="admin-comment" id="comment-f1"></div>
+
+        <img src="images/faculty1.png" alt="Faculty">
+        
+        <div class="faculty-details">
+            <p><strong>Prof.Aishwarya Singh Gautam</strong></p>
+            <p>Department: Computer Science & Engineering</p>
+            <p>Staff Room: A block 306 Cabin C4</p>
+
+             <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+<div class="admin-only">
+      <textarea id="input-f1" placeholder="comment"></textarea>
+      <button onclick="saveComment('f1')">Save</button>
+      <button onclick="deleteComment('f1')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/aishwarya-singh-gautam/" target="_blank" class="profile-link">View profile</a>
+  </div>
+</div>
+
+    <div class="faculty-card" data-faculty-id="f2">
+
+<div class="admin-comment" id="comment-f2"></div>
+
+        <img src="images/faculty2.png">
+
+        <div class="faculty-details">
+            <p><strong>Prof.Aisiri K S</strong></p>
+            <p>Department: Computer Science & Engineering</p>
+            <p>Staff Room: A block 306 Cabin C5</p>
+
+            <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f2" placeholder=" comment"></textarea>
+      <button onclick="saveComment('f2')">Save</button>
+      <button onclick="deleteComment('f2')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/aisiri-k-s/" target="_blank" class="profile-link">View profile</a>
+
+ 
+  </div>
+        </div>
+
+
+    <div class="faculty-card" data-faculty-id="f3">
+
+      <div class="admin-comment" id="comment-f3"></div>
+
+        <img src="images/faculty3.png">
+
+        <div class="faculty-details">
+            <p><strong>Prof.Akhilesh K S</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: B block 405 Cabin C4</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f3" placeholder="comment"></textarea>
+      <button onclick="saveComment('f3')">Save</button>
+      <button onclick="deleteComment('f3')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/akhilesh-k-s/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div>
+
+    <div class="faculty-card" data-faculty-id="f4">
+
+      <div class="admin-comment" id="comment-f4"></div>
+
+        <img src="images/faculty4.png">
+
+        <div class="faculty-details">
+            <p><strong>Prof.Bharath Manchikodi</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: B block 504 Cabin C4</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f4" placeholder="comment"></textarea>
+      <button onclick="saveComment('f4')">Save</button>
+      <button onclick="deleteComment('f4')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/bharath-manchikodi/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div>
+    
+
+  <div class="faculty-card" data-faculty-id="f5">
+
+      <div class="admin-comment" id="comment-f5"></div>
+
+        <img src="images/faculty5.png">
+
+        <div class="faculty-details">
+            <p><strong>Prof.Chethan Kumar G</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: D block 201 Cabin C4</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f5" placeholder="comment"></textarea>
+      <button onclick="saveComment('f5')">Save</button>
+      <button onclick="deleteComment('f5')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/chethan-kumar-g/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div><div class="faculty-card" data-faculty-id="f6">
+
+      <div class="admin-comment" id="comment-f6"></div>
+
+        <img src="images/faculty6.png">
+
+        <div class="faculty-details">
+            <p><strong>Prof.Chidhanand R S</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: D block 201 Cabin C5</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f6" placeholder="comment"></textarea>
+      <button onclick="saveComment('f6')">Save</button>
+      <button onclick="deleteComment('f6')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/chidhanand-r-s/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div><div class="faculty-card" data-faculty-id="f7">
+
+      <div class="admin-comment" id="comment-f7"></div>
+
+        <img src="images/faculty7.png">
+
+        <div class="faculty-details">
+            <p><strong>Ashwini Prasad S</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: B block 105 Cabin C3</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f7" placeholder="comment"></textarea>
+      <button onclick="saveComment('f7')">Save</button>
+      <button onclick="deleteComment('f7')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/ashwini-prasad-s/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div><div class="faculty-card" data-faculty-id="f8">
+
+      <div class="admin-comment" id="comment-f8"></div>
+
+        <img src="images/faculty8.png">
+
+        <div class="faculty-details">
+            <p><strong>Dr. Manish Kumar</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: B block 106 Cabin 2B</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f8" placeholder="comment"></textarea>
+      <button onclick="saveComment('f8')">Save</button>
+      <button onclick="deleteComment('f8')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/dr-manish-kumar/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div><div class="faculty-card" data-faculty-id="f9">
+
+      <div class="admin-comment" id="comment-f9"></div>
+
+        <img src="images/faculty9.png">
+
+        <div class="faculty-details">
+            <p><strong>Dr. Rekha Satish</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: D block 208 Cabin C5</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f9" placeholder="comment"></textarea>
+      <button onclick="saveComment('f9')">Save</button>
+      <button onclick="deleteComment('f9')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/dr-rekha-satish/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div><div class="faculty-card" data-faculty-id="f10">
+
+      <div class="admin-comment" id="comment-f10"></div>
+
+        <img src="images/faculty10.png">
+
+        <div class="faculty-details">
+            <p><strong>Prof.Harish K R</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: B block 206 Cabin C7</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f10" placeholder="comment"></textarea>
+      <button onclick="saveComment('f10')">Save</button>
+      <button onclick="deleteComment('f10')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/harish-k-r/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div><div class="faculty-card" data-faculty-id="f11">
+
+      <div class="admin-comment" id="comment-f11"></div>
+
+        <img src="images/faculty11.png">
+
+        <div class="faculty-details">
+            <p><strong>Prof.Kalpana Devi S</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: A block 306 Cabin C2</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f11" placeholder="comment"></textarea>
+      <button onclick="saveComment('f11')">Save</button>
+      <button onclick="deleteComment('f11')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/kalpana-devi-s/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div>
+
+    <div class="faculty-card" data-faculty-id="f12">
+
+      <div class="admin-comment" id="comment-f12"></div>
+
+        <img src="images/faculty12.png">
+
+        <div class="faculty-details">
+            <p><strong>Prof.Sunilkumar J</strong></p>
+            <p>Department:Computer Science & Engineering</p>
+            <p>Staff Room: B block 206 Cabin C2</p>
+       
+     <p class="status"></p>
+
+            <div class="faculty-only">
+      <button class="toggle-btn">Toggle Availability</button>
+    </div>
+
+     <div class="admin-only">
+      <textarea id="input-f12" placeholder="comment"></textarea>
+      <button onclick="saveComment('f12')">Save</button>
+      <button onclick="deleteComment('f12')" class="delete-comment-btn">Delete</button>
+    </div>
+
+    <a href="https://rvu.edu.in/faculty/sunilkumar-j/" target="_blank" class="profile-link">View profile</a>
+    </div>
+    </div>
+
+
+  </section>
+  
+
+<script>
+function searchFaculty() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let cards = document.getElementsByClassName("faculty-card");
+
+    for (let i = 0; i < cards.length; i++) {
+        let name = cards[i].querySelector("strong").innerText.toLowerCase();
+
+        if (name.includes(input)) {
+            cards[i].classList.remove("hidden");
+        } else {
+            cards[i].classList.add("hidden");
+        }
+    }
+}
+
+
+const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+
+if (!user || user.role !== "faculty") {
+  document.querySelectorAll(".faculty-only").forEach(e => e.style.display = "none");
+}
+
+if (user.role !== "admin" && user.role !== "faculty") {
+  document.querySelectorAll(".admin-only").forEach(e => e.style.display = "none");
+}
+
+
+document.querySelectorAll(".faculty-card").forEach(card => {
+  const id = card.dataset.facultyId;
+  const statusText = card.querySelector(".status");
+if (!id || !statusText) return; 
+  const savedStatus = localStorage.getItem("facultyStatus_" + id) || "available";
+
+  applyStatus(statusText, savedStatus);
+});
+
+
+document.querySelectorAll(".toggle-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const card = this.closest(".faculty-card");
+    const id = card.dataset.facultyId;
+    const statusText = card.querySelector(".status");
+
+    const newStatus = statusText.classList.contains("available")
+      ? "unavailable"
+      : "available";
+
+    localStorage.setItem("facultyStatus_" + id, newStatus);
+    applyStatus(statusText, newStatus);
+  });
+});
+
+function applyStatus(element, status) {
+  element.classList.remove("available", "unavailable");
+
+  if (status === "available") {
+    element.classList.add("available");
+    element.innerText = "🟢 Available";
+  } else {
+    element.classList.add("unavailable");
+    element.innerText = "🔴 Not Available";
+  }
+}
+
+function saveComment(id) {
+  const input = document.getElementById("input-" + id);
+  const commentBox = document.getElementById("comment-" + id);
+
+  if (!input || !commentBox) {
+    console.error("ID mismatch for", id);
+    return;
+  }
+
+  const comment = input.value.trim();
+
+  if (comment === "") {
+    alert("Comment cannot be empty");
+    return;
+  }
+
+  localStorage.setItem("facultyComment_" + id, comment);
+  commentBox.innerText = comment;
+
+  input.value = "";
+}
+
+function deleteComment(id) {
+  localStorage.removeItem("facultyComment_" + id);
+  document.getElementById("comment-" + id).innerText = "";
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll(".faculty-card").forEach(card => {
+    const id = card.dataset.facultyId;
+    if (!id) return;
+
+    const saved = localStorage.getItem("facultyComment_" + id);
+    if (saved) {
+      const commentBox = document.getElementById("comment-" + id);
+      if (commentBox) commentBox.innerText = saved;
+    }
+  });
+
+});
+
+
+</script>
+ 
+ <script src="dashboard.js"></script>
+
+ <footer class="footer">
+  <div class="footer-container">
+
+    
+    <div class="footer-box">
+      <h3>About Us</h3>
+      <p>
+        Unified Campus Information System (UCIS) is a web-based platform designed to manage and display faculty information in a centralized way.
+It provides secure login and easy access to campus-related details, improving efficiency and reducing manual work.
+      </p>
+
+      <div class="social-icons">
+        <a href="#">f</a>
+        <a href="#">t</a>
+        <a href="#">i</a>
+        <a href="#">▶</a>
+      </div>
+    </div>
+
+    
+    <div class="footer-box">
+      <h3>Support</h3>
+      <ul>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Help</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    
+    <div class="footer-box">
+      <h3>Academics</h3>
+      <ul>
+        <li><a href="#">Departments</a></li>
+        <li><a href="#">Faculty Directory</a></li>
+        <li><a href="#">Course Information</a></li>
+      </ul>
+    </div>
+
+   
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>✉ hemablbtech24@rvu.edu.in</p>
+      <p>✉ lochanakbtech24@rvu.edu.in</p>
+      <p>✉ mnandhinibtech24@rvu.edu.in</p>
+      <p>✉ maithrigbtech24@rvu.edu.in</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    Copyright © 2026 UCIS.All Rights Reserved.maintained by Unitech builders
+  </div>
+</footer>
+</body>
+</html>

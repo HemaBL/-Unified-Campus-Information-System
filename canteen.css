@@ -1,0 +1,54 @@
+body {
+  font-family: 'Segoe UI';
+  background:url(https://i.pinimg.com/1200x/02/0a/a1/020aa191a471a7d5e6c3d393da575ed8.jpg);
+  margin: 0;
+}
+
+.main-title {
+  text-align: center;
+  padding: 20px;
+  font-size: 32px;
+  background: linear-gradient(to right, rgb(201, 153, 109), rgb(108, 58, 5));
+  color: white;
+}
+
+/* CANTEEN SECTION */
+.canteen {
+  margin: 30px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.canteen h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* GRID MENU */
+.menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+/* ITEM CARD */
+.item {
+  background: #f1f1f1;
+  padding: 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+
+.item:hover {
+  background: orange;
+  color: white;
+  transform: scale(1.05);
+}
+
+.item span {
+  font-weight: bold;
+}
