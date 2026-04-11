@@ -9,7 +9,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, {
+  extensions: ["html", "js", "css"]
+}));
 
 // REGISTER
 app.post("/api/register", (req, res) => {
@@ -68,6 +70,10 @@ app.post("/api/login", (req, res) => {
       user
     });
   });
+});
+
+app.get("/login.js", (req, res) => {
+  res.sendFile(path.join(__dirname, "login.js"));
 });
 
 app.get("/", (req, res) => {
