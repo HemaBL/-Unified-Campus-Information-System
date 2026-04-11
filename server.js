@@ -1,106 +1,81 @@
 const express = require("express");
 const cors = require("cors");
-const mysql = require("mysql2");
-const bcrypt = require("bcryptjs");
+const path = require("path");
+require("dotenv").config();
+
+const db = require("./db");
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname));
 
-
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "rv_university"
-});
-
-db.connect(err => {
-  if (err) {
-    console.log("❌ Database connection failed:", err);
-  } else {
-    console.log("✅ Database connected");
-  }
-});
-
-//  TEST ROUTE
-app.get("/", (req, res) => {
-  res.send("UCIS backend running");
-});
-
-// REGISTER USER
-app.post("/api/users/register", async (req, res) => {
+// REGISTER
+app.post("/api/register", (req, res) => {
   const { username, password, role } = req.body;
 
-  // validation
-  if (!username || !password || !role) {
-    return res.status(400).json({ message: "All fields are required" });
+  if (password !== "rvu@123") {
+    return res.status(400).json({ message: "Invalid registration key" });
   }
 
-  try {
-    const hashedPassword = await bcrypt.hash(password, 10);
+  const rolePasswords = {
+    student: "student@123",
+    faculty: "faculty@123",
+    admin: "admin@123",
+    guest: "guest@123"
+  };
 
-    const query =
-      "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+  const finalPassword = rolePasswords[role];
 
-    db.query(query, [username, hashedPassword, role], (err, result) => {
-      if (err) {
-        if (err.code === "ER_DUP_ENTRY") {
-          return res.status(409).json({ message: "Username already exists" });
-        }
-        console.error(err);
-        return res.status(500).json({ message: "Database error" });
-      }
-
-      res.status(201).json({
-        id: result.insertId,
-        username,
-        role
-      });
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+  if (!finalPassword) {
+    return res.status(400).json({ message: "Invalid role selected" });
   }
+
+  const query = "INSERT INTO users (username, password, role) VALUES (?, ?, ?)";
+
+  db.query(query, [username, finalPassword, role], (err) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ message: "DB error" });
+    }
+
+    res.json({ message: "Registration successful" });
+  });
 });
 
-//  LOGIN USER
-app.post("/api/users/login", (req, res) => {
+// LOGIN
+app.post("/api/login", (req, res) => {
   const { username, password } = req.body;
-
-  if (!username || !password) {
-    return res.status(400).json({ message: "Username and password required" });
-  }
 
   const query = "SELECT * FROM users WHERE username = ?";
 
-  db.query(query, [username], async (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ message: "Database error" });
-    }
+  db.query(query, [username], (err, results) => {
+    if (err) return res.status(500).json({ message: "DB error" });
 
-    if (!results || results.length === 0) {
-      return res.status(401).json({ message: "Invalid username or password" });
+    if (results.length === 0) {
+      return res.status(400).json({ message: "User not found" });
     }
 
     const user = results[0];
 
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: "Invalid username or password" });
+    if (password !== user.password) {
+      return res.status(400).json({ message: "Wrong password" });
     }
 
-    // SUCCESS LOGIN RESPONSE
-    res.status(200).json({
-      id: user.id,
-      username: user.username,
-      role: user.role
+    res.json({
+      message: "Login successful",
+      user
     });
   });
 });
 
-//START SERVER 
-app.listen(3000, () => {
-  console.log("🚀 Server running on http://localhost:3000");
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });
