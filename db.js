@@ -1,6 +1,15 @@
 const mysql = require("mysql2");
 
-const connection = mysql.createConnection(process.env.MYSQL_PUBLIC_URL);
+const connection = mysql.createConnection({
+  host: "metro.proxy.rlwy.net",
+  user: "root",
+  password: "lXQQegnUhZjFPvKayKwDRdvoidEKnPgC",
+  database: "railway",
+  port: 28482,
+  ssl: {
+    rejectUnauthorized: false
+  }
+});
 
 connection.connect((err) => {
   if (err) {
